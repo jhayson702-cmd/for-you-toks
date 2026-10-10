@@ -1,22 +1,33 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
-* { box-sizing: border-box; }
+/* GENERAL */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   min-height: 100vh;
   background: radial-gradient(
-    ellipse at top, #35101f, #0b080e 75%
+    ellipse at top,
+    #35101f,
+    #0b080e 75%
   );
   color: #fff0f3;
   font-family: 'DM Sans', sans-serif;
   overflow-x: hidden;
 }
 
+/* MAIN LAYOUT */
 .app {
   max-width: 440px;
   margin: auto;
+  min-height: 100vh;
   min-height: 100dvh;
   padding: 26px 22px 35px;
   position: relative;
@@ -32,6 +43,7 @@ body {
   animation: heartbeat 1.6s infinite;
 }
 
+/* PAGES */
 .page {
   display: none;
   text-align: center;
@@ -40,9 +52,15 @@ body {
   animation: fadeIn .6s ease;
 }
 
-.page.active { display: block; }
-.hidden { display: none !important; }
+.page.active {
+  display: block;
+}
 
+.hidden {
+  display: none !important;
+}
+
+/* TEXT */
 h1, h2 {
   font-family: 'Playfair Display', serif;
 }
@@ -54,7 +72,9 @@ h1 {
   margin: 15px 0;
 }
 
-h2 { font-size: 25px; }
+h2 {
+  font-size: 25px;
+}
 
 p {
   line-height: 1.8;
@@ -68,7 +88,9 @@ p {
   animation: float 3s ease-in-out infinite;
 }
 
-.panel, .love-note {
+/* CARDS */
+.panel,
+.love-note {
   background: rgba(77, 23, 43, .38);
   border: 1px solid #713046;
   border-radius: 22px;
@@ -77,6 +99,7 @@ p {
   box-shadow: 0 12px 45px #0004;
 }
 
+/* PASSWORD INPUT */
 input {
   width: 100%;
   background: #140b13;
@@ -90,8 +113,11 @@ input {
   margin: 12px 0;
 }
 
-input:focus { border-color: #ff648d; }
+input:focus {
+  border-color: #ff648d;
+}
 
+/* BUTTONS */
 button {
   display: block;
   width: 100%;
@@ -99,14 +125,21 @@ button {
   padding: 15px 12px;
   border: 0;
   border-radius: 40px;
-  background: linear-gradient(135deg, #d92f60, #97203f);
+  background: linear-gradient(
+    135deg,
+    #d92f60,
+    #97203f
+  );
   color: white;
   font: 700 15px 'DM Sans', sans-serif;
   cursor: pointer;
   box-shadow: 0 7px 22px #bf285244;
+  touch-action: manipulation;
 }
 
-button:active { transform: scale(.97); }
+button:active {
+  transform: scale(.97);
+}
 
 button.secondary {
   background: transparent;
@@ -115,7 +148,8 @@ button.secondary {
   color: #ffb6c8;
 }
 
-#error, .status {
+#error,
+.status {
   display: block;
   color: #ffa2b9;
   min-height: 23px;
@@ -139,7 +173,8 @@ footer {
   aspect-ratio: 1;
   margin: 25px auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 4px;
   background: #5b243c;
   border: 5px solid #5b243c;
@@ -148,15 +183,22 @@ footer {
 }
 
 .tile {
+  display: block;
   border: 0;
   border-radius: 3px;
   margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
+  min-width: 0;
+  min-height: 0;
+  background-color: #321020;
   background-image: var(--puzzle-image);
   background-size: 300% 300%;
+  background-repeat: no-repeat;
   box-shadow: none;
   position: relative;
+  cursor: pointer;
 }
 
 .tile.selected {
@@ -169,7 +211,7 @@ footer {
   outline: 3px solid white;
 }
 
-/* AUDIO */
+/* VOICE MESSAGE */
 .sound {
   font-size: 38px;
   color: #ff7e9f;
@@ -189,6 +231,7 @@ footer {
   box-shadow: 0 20px 45px #0007;
   cursor: pointer;
   transition: transform .6s;
+  perspective: 700px;
 }
 
 .envelope:before {
@@ -196,7 +239,11 @@ footer {
   position: absolute;
   inset: 0;
   background: #d24569;
-  clip-path: polygon(0 0, 50% 58%, 100% 0);
+  clip-path: polygon(
+    0 0,
+    50% 58%,
+    100% 0
+  );
   z-index: 2;
 }
 
@@ -204,7 +251,11 @@ footer {
   position: absolute;
   inset: 0;
   background: #eb5b7b;
-  clip-path: polygon(0 0, 100% 0, 50% 58%);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    50% 58%
+  );
   z-index: 3;
   transform-origin: top;
   transition: transform .7s;
@@ -224,14 +275,19 @@ footer {
   transform: rotateX(180deg);
 }
 
-.envelope.open .seal { opacity: 0; }
+.envelope.open .seal {
+  opacity: 0;
+}
 
+/* LOVE LETTER */
 .love-note {
   text-align: left;
   animation: fadeIn 1s;
 }
 
-.love-note h2 { color: #ff8ca8; }
+.love-note h2 {
+  color: #ff8ca8;
+}
 
 .love-note p {
   color: #ffe0e7;
@@ -243,7 +299,7 @@ footer {
   font-style: italic;
 }
 
-/* GIFT BOX */
+/* FINAL GIFT */
 .gift-box {
   width: 155px;
   height: 160px;
@@ -261,7 +317,11 @@ footer {
   height: 125px;
   display: grid;
   place-items: center;
-  background: linear-gradient(120deg, #991e41, #ef4c78);
+  background: linear-gradient(
+    120deg,
+    #991e41,
+    #ef4c78
+  );
   border-radius: 5px;
   font-size: 48px;
   color: #ffcfda;
@@ -303,6 +363,7 @@ footer {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
+  z-index: 0;
 }
 
 .floating-heart {
@@ -312,31 +373,65 @@ footer {
   animation: rise 5s linear forwards;
 }
 
+/* ANIMATIONS */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.12); }
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
 }
 
 @keyframes rise {
-  to { transform: translateY(-110vh) rotate(25deg); opacity: 0; }
+  to {
+    transform: translateY(-110vh) rotate(25deg);
+    opacity: 0;
+  }
 }
 
+/* IPHONE AND SMALL SCREENS */
+@media (max-width: 380px) {
+  .app {
+    padding: 20px 16px 28px;
+  }
+
+  .panel,
+  .love-note {
+    padding: 20px 15px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+}
+
+/* ACCESSIBILITY */
 @media (prefers-reduced-motion: reduce) {
-  *, *:before, *:after {
+  *,
+  *:before,
+  *:after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
   }
 }
-
-</main>
-<script src="script.js"></script>
