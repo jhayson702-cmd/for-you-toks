@@ -1,0 +1,150 @@
+<link rel="stylesheet" href="style.css">
+
+<div class="hearts" id="hearts"></div>
+
+<main class="app">
+  <div class="top-heart">♥</div>
+
+  <!-- PASSWORD -->
+  <section class="page active" id="lock">
+    <div class="emoji">🔐</div>
+    <h1>For You, Toks</h1>
+    <p>A little secret made just for you.</p>
+    <div class="panel">
+      <h2>Unlock My Heart</h2>
+      <p>Enter our secret password ❤️</p>
+      <input id="password" type="password"
+        placeholder="Secret password"
+        autocomplete="off">
+      <button onclick="unlock()">Unlock Toks❤️</button>
+      <small id="error"></small>
+    </div>
+  </section>
+
+  <!-- WELCOME -->
+  <section class="page" id="welcome">
+    <div class="emoji">💌</div>
+    <h1>Hi, Toks!</h1>
+    <p>
+      I made this little something just for you, with all the love and sweetness in my heart. Every tiny detail holds a piece of my love, and I hope it makes you smile and reminds you just how special you are to me. 💗.
+    </p>
+    <button onclick="go('puzzle')">
+      Start Your Surprise😉→
+    </button>
+  </section>
+
+  <!-- PHOTO PUZZLE -->
+  <section class="page" id="puzzle">
+    <div class="emoji">🧩</div>
+    <h1>Our Little Puzzle</h1>
+    <p>Arrange the pieces to reveal our memory.</p>
+    <p class="hint">
+      Tap two pieces to swap their positions.
+    </p>
+    <div id="board" class="board"></div>
+    <div id="puzzleStatus" class="status"></div>
+    <button id="puzzleNext" class="hidden"
+      onclick="go('voice')">
+      Continue ❤️
+    </button>
+    <button class="secondary" onclick="shufflePuzzle()">
+      Shuffle Again
+    </button>
+  </section>
+
+  <!-- VOICE -->
+  <section class="page" id="voice">
+    <div class="emoji">🎙️</div>
+    <h1>Listen, Toks...</h1>
+    <p>I have something I want you to hear.</p>
+    <div class="panel">
+      <div class="sound">♫ ♥ ♫</div>
+      <button onclick="playVoice()">
+        ▶ Play My Message
+      </button>
+      <button class="secondary" onclick="stopVoice()">
+        ■ Stop
+      </button>
+      <audio id="recording" preload="none"></audio>
+      <p class="hint" id="voiceStatus">
+        A message from my heart.
+      </p>
+    </div>
+    <button onclick="stopVoice();go('letter')">
+      Open My Letter →
+    </button>
+  </section>
+
+  <!-- LOVE LETTER -->
+  <section class="page" id="letter">
+    <div class="emoji">💌</div>
+    <h1>A Letter For You</h1>
+    <p>Tap the envelope to open it.</p>
+
+    <div class="envelope" id="envelope"
+      role="button" tabindex="0"
+      onclick="openLetter()"
+      onkeydown="if(event.key==='Enter')openLetter()">
+      <div class="flap"></div>
+      <div class="seal">♥</div>
+    </div>
+
+    <article class="love-note hidden" id="loveNote">
+      <h2>Dear Toks, ❤️</h2>
+      <p>
+        I just want you to know how much
+        you mean to me. You make my
+        ordinary days feel extraordinary.
+      </p>
+      <p>
+        Thank you for your smiles,
+        your kindness, and every little
+        moment we share.
+      </p>
+      <p>
+        No matter what happens, I will
+        always be grateful that I met you.
+        You are one of my favorite parts
+        of life.
+      </p>
+      <p class="signature">
+        “Forever Toks,<br>
+        Yours, always ❤️
+      </p>
+      <button onclick="go('gift')">
+        One Last Surprise →
+      </button>
+    </article>
+  </section>
+
+  <!-- FINAL GIFT -->
+  <section class="page" id="gift">
+    <div class="emoji">🎁</div>
+    <h1>One Last Surprise</h1>
+    <p>Tap the gift box, Love!</p>
+
+    <div class="gift-box" id="giftBox"
+      role="button" tabindex="0"
+      onclick="revealGift()"
+      onkeydown="if(event.key==='Enter')revealGift()">
+      <div class="gift-lid"></div>
+      <div class="gift-body">♥</div>
+    </div>
+
+    <div id="finalMessage" class="hidden">
+      <h1 class="big-love">I LOVE YOU! ❤️</h1>
+      <p>
+        You are my favorite person,
+        my happiness, and my sweetest
+        surprise. I'm so lucky to have you.
+      </p>
+      <div class="emoji">💖🌹💖</div>
+      <button onclick="restart()">
+        Replay Our Surprise ↻
+      </button>
+    </div>
+  </section>
+
+  <footer>Made with ❤️ just for Love</footer>
+</main>
+<link rel="stylesheet" href="style.css">
